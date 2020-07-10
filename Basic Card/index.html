@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+        <script src = "https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+
+        <link rel = "stylesheet" href="app.css"/>
+        <title> GUEST LIST </title>
+    </head>
+    
+    <body>
+        <div id="app">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <!-- col-md-6 => medium screen -->
+                        <!-- create class card  -->
+                        <div class="card"> 
+                            <div class="card-header" >
+                                {{ event.timestamp }}
+                                <!-- message -->
+                            </div>
+                            <div class="card-block">
+                                <h4 class="card-title">
+                                    <!-- message -->
+                                    {{ event.eventTitle }}
+                                </h4>
+                                <p class="card-text">
+                                    <!-- message -->
+                                    {{ event.eventDescription }}
+                                </p>
+                                <p class="card-text">
+                                Add your name to the guest list for invitation:
+                                </p>
+                                <form class="form-inline" @submit.prevent="formSubmitted">
+                                    <input type="text" id="nameInput" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="ENTER GUEST NAME" v-model="newNameText">
+                                    <input type="submit" class="btn btn-primary"></input>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                Attending ({{ guestNames.length }})
+                            </div>
+                        <div class="card-block">
+                            <div v-if="guestNames.length > 0">
+                                <div class="bg-success text-white rounded name-box" v-for="name in guestNames">
+                                    {{ name }}
+                                </div>
+                            </div>
+                            <div v-else>
+                                <h4>
+                                    No named added yet...
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
+</html>
